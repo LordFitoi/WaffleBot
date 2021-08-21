@@ -1,17 +1,19 @@
-from models.chatbot import Chatbot
-from models.corpus import Corpus
+import json, os
+from models.client import Client
 
-VERSION = "0.0.1"
+main_path = os.path.dirname(__file__)
 
-corpus = Corpus("es")
-chatbot = Chatbot(corpus)
+""" Load the bot configuration """
+config_path = os.path.join(main_path, "config.json")
 
-print(f"WaffleBot Release v{VERSION}")
+with open(config_path, "r") as jsonfile:
+    bot_config: dict = json.load(jsonfile)
 
-while True:
-    context = input(">> ")
-    
-    if context.lower() == "exit":
-        break
+if __name__ == "__main__":
+    client: object = Client(
+        config = bot_config,
+        main_path = main_path
+    )
 
-    chatbot.chat(context)
+    bot_token: str = bot_config.get("BotToken")
+    client.run(bot_token)

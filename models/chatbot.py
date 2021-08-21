@@ -33,4 +33,4 @@ class Chatbot(IntentClassifier, CommandsMixin):
         if label != "NoContext":
             response = self.callbacks[label](response, label, context)
 
-        print(f"Bot: {response}")
+        return response
