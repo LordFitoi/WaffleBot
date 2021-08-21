@@ -1,5 +1,5 @@
 # WaffleBot
-A simple Machine Learning Chatbot
+A machine learning chatbot for Discord with sklearn.
 > Require python3.8^
 
 ## Quickstart
