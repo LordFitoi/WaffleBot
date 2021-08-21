@@ -1,0 +1,67 @@
+{
+    "GetTime": {
+        "samples": [
+            "¿Que hora es?",
+            "¿Me puedes decir la hora?",
+            "¿Quiero saber la hora?"
+        ],
+        "replies": [
+            "Son las $TIME",
+            "Deben de ser las $TIME",
+            "Creo que son las $TIME",
+            "Ahora mismo son las $TIME"
+        ]
+    },
+    "DoMath": {
+        "samples": [
+            "$Cuanto es ([0-9+-/*().\\s]+)",
+            "$Calculame ([0-9+-/*().\\s]+)",
+            "$Podrias calcularme ([0-9+-/*().\\s]+)",
+            "$Esta operacion ([0-9+-/*().\\s]+)",
+            "$Equivale ([0-9+-/*().\\s]+)"
+        ],
+        "replies": [
+            "Eso es igual a $EVAL",
+            "Eso equivale a $EVAL",
+            "Creo que es $EVAL",
+            "$EXPR es igual a $EVAL"
+        ]
+    },
+    "RepeatUser": {
+        "samples": [
+            "$Repite conmigo[,.:;\\s]*(.*)",
+            "$Repite lo que digo[,.:;\\s]*(.*)",
+            "$Repite lo que diga[,.:;\\s]*(.*)",
+            "$Repite[,.:;\\s]*(.*)",
+            "$Di[,.:;\\s]*(.*)"
+        ],
+        "replies": ["$MSG"]
+    },
+    "NoContext": {
+        "replies": [
+            "¿No entendí, podrías explicarte?",
+            "No me quedo claro",
+            "Creo que no entendí"
+        ]
+    },
+
+
+
+    "Error": {
+        "replies": [
+            "Verás, como maquina tengo mis limitaciones...",
+            "Aun no soy lo suficientemente inteligente...",
+            "Entiendo que tengas expectativas pero...",
+            "Mi analisis tiene problemas..."
+        ]
+    },
+    "ErrorMath": {
+        "replies": [
+            "Has escrito mal la operación",
+            "¿Podrías escribir correctamente la operación?",
+            "Creo que has escrito mal la operación",
+            "Deberías corregir la sintaxis antes de continuar."
+        ]
+    }
+    
+}
