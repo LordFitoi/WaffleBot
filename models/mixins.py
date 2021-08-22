@@ -25,6 +25,10 @@ class UtilsMixin:
         if self.config["DebugMode"]:
             print(f"{message.author} : {message.content}")
 
+    def is_Mentioned(self, message: str) -> bool:
+        is_named = self.name.lower() in message.content.lower() 
+        return is_named or self.user.mentioned_in(message)
+            
 
 class ViewsMixin:
     def load_embed(self, name: str) -> dict:
@@ -76,13 +80,13 @@ class ViewsMixin:
 
 
 class DiscordCommandsMixin(UtilsMixin, ViewsMixin):
-    async def chat(self, message: str, arguments: list):
-        context = " ".join(arguments)
-        content = self.load_embed("dialog")
-        content["description"] = f"`{self.chatbot.chat(context)}`"
-        embed = self.create_embed(content)
+    async def chat(self, message: str):
+        if response := self.chatbot.chat(message.content):
+            content  = self.load_embed("dialog")
+            content["description"] = f"`{response}`"
+            embed = self.create_embed(content)
 
-        await message.channel.send(embed = embed)
+            await message.channel.send(embed = embed)
 
 
 class CommandsMixin:
@@ -92,12 +96,13 @@ class CommandsMixin:
 
     def get_time(self, response, *args):
         time = datetime.now()
-        time_str = time.strftime("%I:%M%p %z")
+        time_str = time.strftime("%I:%M%p")
 
         return response.replace("$TIME", time_str)
 
     def do_math(self, response, *args):
         label, context = args
+        context = context.replace(",", " ")
 
         for pattern in self.patterns[label]:
             if match := search(pattern, context.lower()):

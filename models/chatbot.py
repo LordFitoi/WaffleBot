@@ -28,9 +28,11 @@ class Chatbot(IntentClassifier, CommandsMixin):
 
     def chat(self, context):
         label = self.predict(context)
-        response = choice(self.replies[label])
+
+        response = ""
          
         if label != "NoContext":
+            response = choice(self.replies[label])
             response = self.callbacks[label](response, label, context)
 
         return response

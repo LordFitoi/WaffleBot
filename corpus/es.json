@@ -37,15 +37,6 @@
         ],
         "replies": ["$MSG"]
     },
-    "NoContext": {
-        "replies": [
-            "¿No entendí, podrías explicarte?",
-            "No me quedo claro",
-            "Creo que no entendí"
-        ]
-    },
-
-
 
     "Error": {
         "replies": [
